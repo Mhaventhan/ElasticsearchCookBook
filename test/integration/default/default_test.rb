@@ -6,4 +6,5 @@
 # found at http://inspec.io/docs/reference/resources/
 describe package("openjdk-8-jdk") do
   it { should be_installed }
+  its('version') { should match /1.\./ }
 end
