@@ -5,7 +5,7 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 # updating ubuntu source list
-apt_update "update_sources" do
+apt_update "update" do
   action :update
 end
 
@@ -21,7 +21,7 @@ package 'apt-transport-https' do
 
 # adding the public signing key for elasticsearch
 bash "add-key" do
-  code "wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - "
+  code "wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -"
   action :run
 end
 
@@ -34,11 +34,31 @@ apt_repository "elasticsearch" do
 end
 
 #updating ubuntu source list
-apt_update "update_sources" do
+apt_update "update" do
   action :update
 end
 
-# Installing package for elasticsearch package 
+# Installing package for elasticsearch package
 package "elasticsearch" do
   action :install
+end
+
+service "elasticsearch" do
+  action [:enable, :start]
+end
+
+file("/etc/elasticsearch/elasticsearch.yml") do
+  action :delete
+end
+
+file("/etc/elasticsearch/jvm.options") do
+  action :delete
+end
+
+template("/etc/elasticsearch/elasticsearch.yml") do
+  source "elasticsearch.yml.erb"
+end
+
+template("/etc/elasticsearch/jvm.options") do
+  source "jvm.options.erb"
 end
