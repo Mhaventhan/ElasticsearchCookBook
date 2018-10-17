@@ -19,6 +19,14 @@ end
 
 describe package("elasticsearch") do
   it { should be_installed }
+its('version') { should match /6.4\./ }
+end
+
+describe file("/etc/elasticsearch/elasticsearch.yml") do
+  it { should exist }
+end
+describe file("/etc/elasticsearch/jvm.options") do
+  it { should exist }
 end
 
 describe service("elasticsearch") do

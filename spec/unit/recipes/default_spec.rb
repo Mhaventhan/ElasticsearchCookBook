@@ -45,6 +45,7 @@ describe 'Elasticsearch::default' do
 
     it "should start the elasticsearch service" do
       expect(chef_run).to start_service("elasticsearch")
+      expect(chef_run).to enable_service("elasticsearch")
     end
 
     it "should delete the existing /etc/elasticsearch/elasticsearch.yml" do
