@@ -10,10 +10,6 @@
 <h2 id="what">Elasticsearch </h2>
 Elasticsearch is a search engine based on Lucene. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents. Elasticsearch is developed in Java and is released as open source under the terms of the Apache License. Official clients are available in Java, .NET (C#), PHP, Python, Apache Groovy, Ruby and many other languages. Elasticsearch is part of the <a https://www.elastic.co/ stack which is used to monitor immutable infrastructure.
 
-
-
-
-
 ## How to use this cookbook
 - In your projects Berksfile, include this line:
 ```ruby
