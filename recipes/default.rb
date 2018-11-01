@@ -10,7 +10,7 @@ apt_update "update" do
 end
 
 #Installing java 8
-package "openjdk-8-jre" do
+package "libxt-dev" do
   action :install
 end
 
