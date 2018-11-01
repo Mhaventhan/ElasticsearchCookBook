@@ -10,6 +10,10 @@ apt_update "update" do
 end
 
 #Installing java 8
+package "openjdk-8-jre" do
+  action :install
+end
+
 package "openjdk-8-jdk" do
   action :install
 end
