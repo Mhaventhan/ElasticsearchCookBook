@@ -22,6 +22,10 @@ describe 'Elasticsearch::default' do
     it 'updates all sources' do
       expect(chef_run).to update_apt_update('update')
     end
+    
+    it 'should install libxt-dev' do
+      expect(chef_run).to install_package("libxt-dev")
+    end
 
     it 'should install java' do
       expect(chef_run).to install_package("openjdk-8-jdk")
